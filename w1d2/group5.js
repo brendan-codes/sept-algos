@@ -7,54 +7,49 @@
 // array / bar visualization:
 // https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/visualize/
 
-// [1, 3, 4, 9]
-//           3
-
-// temp = 3
-// j = 0
-
-
 
 function insertionSort(arr) {
-    var len = arr.length;
-    for (var i = 1; i < len; i++) {
 
-        // save the current element
-        var temp = arr[i];
-
-        // save the previous index
-        var j = i - 1;
-
-        // while j is within the bounds of the array
-        // and that element is larger than temp
-        while (j >= 0 && arr[j] > temp) {
-            // shift to the left and decrement j
+    for (var i = 0; i < arr.length; i++) {
+        var temp = arr[i]; //var [temp] = arr[i]
+        let j = i - 1
+        while (j >= 0 && temp < arr[j]) {
             arr[j + 1] = arr[j];
             j--;
         }
-        // when the loop completes, move the temp into the proper location
         arr[j + 1] = temp;
     }
     return arr;
-};
+}
+console.log(insertionSort([3, 5, 1, 2, 4]))
 
-function insertionSortDestructuredSwap(arr) {
-    let len = arr.length;
-    for (let i = 1; i < len; i++) {
-        // hold the index instead of the temp
-        let idx = i;
-        let j = i - 1;
-        // compare with indexes
-        while (j >= 0 && arr[j] > arr[idx]) {
-            // swap in one line
+function insertionSort(arr) {
 
-            [arr[j], arr[idx]] = [arr[idx], arr[j]];
-            idx = j;
+    for (var i = 0; i < arr.length; i++) {
+        var temp = arr[i]; //var [temp] = arr[i]
+        let j = i - 1
+        while (j >= 0 && temp < arr[j]) {
+            arr[j + 1] = arr[j];
+            arr[j] = temp;
             j--;
         }
+
     }
     return arr;
 }
+console.log(insertionSort([3, 5, 1, 2, 4]))
+
+
+// bonus challenge: use destructuring for your swap;
+//   1. consider the first item as sorted
+//   2. move to the next item
+//   3. store current item in a temp var (to make this position availale to shift items)
+//   4. if item to the left of current is greater than current item,
+//      shift the left item to the right
+//   5. repeat step 4 as many times as needed
+//   6. insert current item
+//   7. move to the next item and repeat
+
 
 
 
@@ -90,4 +85,4 @@ function insertionSortDestructuredSwap(arr) {
 //   5. repeat step 4 until item to left is less than current item
 //   6. move to next item and repeat
 
-// bonus challenge: use destructuring for your swap
+// bonus challenge: use destructuring for your swap;

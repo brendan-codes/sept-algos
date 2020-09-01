@@ -7,55 +7,56 @@
 // array / bar visualization:
 // https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/visualize/
 
-// [1, 3, 4, 9]
-//           3
-
-// temp = 3
-// j = 0
-
-
 
 function insertionSort(arr) {
-    var len = arr.length;
-    for (var i = 1; i < len; i++) {
-
-        // save the current element
+    for (i = 1; i < arr.length; i++) {
         var temp = arr[i];
-
-        // save the previous index
         var j = i - 1;
-
-        // while j is within the bounds of the array
-        // and that element is larger than temp
-        while (j >= 0 && arr[j] > temp) {
-            // shift to the left and decrement j
+        while (j > 0 && arr[j] > temp) {
             arr[j + 1] = arr[j];
             j--;
         }
-        // when the loop completes, move the temp into the proper location
         arr[j + 1] = temp;
     }
     return arr;
-};
+}
 
-function insertionSortDestructuredSwap(arr) {
-    let len = arr.length;
-    for (let i = 1; i < len; i++) {
-        // hold the index instead of the temp
-        let idx = i;
-        let j = i - 1;
-        // compare with indexes
-        while (j >= 0 && arr[j] > arr[idx]) {
-            // swap in one line
+console.log(insertionSort([8, 10, 5, 3, 1]))
 
-            [arr[j], arr[idx]] = [arr[idx], arr[j]];
-            idx = j;
-            j--;
+//temp = 10,j=0  -> i=2,j=1, arr[j] =10[5,8,10]-> i =3, j=2,[]
+
+
+function insertSort(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < arr[i - 1]) {
+            for (var j = i; j > 0; j--) {
+                if (arr[j] < arr[j - 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = temp;
+                }
+            }
         }
     }
     return arr;
 }
 
+
+/*function insertionSort(arr) {
+    for (i = 0; i < arr.length; i++) {
+        for (j = 0; j < i; j++) {
+            if (arr[i] < arr[j]) {
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+};
+
+var arr = [1, 4, 3, 5, 7, 2]
+insertionSort(arr)
+console.log(arr) logged [1, 2, 3, 4, 5, 7]*/
 
 
 //  - efficient for small data sets
@@ -90,4 +91,4 @@ function insertionSortDestructuredSwap(arr) {
 //   5. repeat step 4 until item to left is less than current item
 //   6. move to next item and repeat
 
-// bonus challenge: use destructuring for your swap
+// bonus challenge: use destructuring for your swapengthar> >le1arr&

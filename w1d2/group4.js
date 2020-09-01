@@ -7,54 +7,18 @@
 // array / bar visualization:
 // https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/visualize/
 
-// [1, 3, 4, 9]
-//           3
-
-// temp = 3
-// j = 0
-
-
 
 function insertionSort(arr) {
-    var len = arr.length;
-    for (var i = 1; i < len; i++) {
-
-        // save the current element
-        var temp = arr[i];
-
-        // save the previous index
-        var j = i - 1;
-
-        // while j is within the bounds of the array
-        // and that element is larger than temp
-        while (j >= 0 && arr[j] > temp) {
-            // shift to the left and decrement j
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        // when the loop completes, move the temp into the proper location
-        arr[j + 1] = temp;
-    }
-    return arr;
-};
-
-function insertionSortDestructuredSwap(arr) {
-    let len = arr.length;
-    for (let i = 1; i < len; i++) {
-        // hold the index instead of the temp
-        let idx = i;
-        let j = i - 1;
-        // compare with indexes
-        while (j >= 0 && arr[j] > arr[idx]) {
-            // swap in one line
-
-            [arr[j], arr[idx]] = [arr[idx], arr[j]];
-            idx = j;
-            j--;
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i; j >= 0; j--) {
+            if (arr[j + 1] < arr[j]) {
+                [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+            }
         }
     }
-    return arr;
+    return arr
 }
+console.log(insertionSort([8, 5, 8, 2, 6, 9, 3, 1, 4, 0, 7]))
 
 
 
